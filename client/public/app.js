@@ -10,7 +10,6 @@ import Homepage from './Homepage';
 const history = syncHistoryWithStore(createBrowserHistory(), store)
 
 const NoPage = () => <h1>Uh Oh! 404 Page Not Found</h1>;
-
 const App = () => (
   <Provider store={store}>
     <Router history={history}>

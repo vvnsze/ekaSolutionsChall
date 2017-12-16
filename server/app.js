@@ -15,7 +15,6 @@ const compiler = webpack(webpackConfig);
 app.use('api/',apiRoutes)
 
 //For development only
-
 if(process.env.NODE_ENV === 'development') {
   app.use(middleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
