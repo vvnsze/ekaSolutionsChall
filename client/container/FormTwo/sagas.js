@@ -5,8 +5,8 @@ import {
   FORM_TWO_SUBMISSION_RESULTS
 } from './constants';
 
-export function* initiateFormOneSubmit() {
-  yield takeLatest(POST_FORM_TWO, FormOneSubmit);
+export function* initiateFormTwoSubmit() {
+  yield takeLatest(POST_FORM_TWO, FormTwoSubmit);
 }
 
 function* FormTwoSubmit(action) {

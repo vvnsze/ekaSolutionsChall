@@ -1,6 +1,6 @@
 const config = require('../config/database');
 
-const Address = bookshelf.Model.extend({
+const Address = config.bookshelf.Model.extend({
   tableName: 'addresses',
   user: function() {
     return this.belongsTo(User);

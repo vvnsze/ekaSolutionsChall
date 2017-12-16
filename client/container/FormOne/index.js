@@ -79,7 +79,7 @@ class FormOne extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    formOne: state.formOne,
+    result: state.formOne.result,
   };
 }
 
