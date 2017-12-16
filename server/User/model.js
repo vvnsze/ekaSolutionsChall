@@ -1,6 +1,5 @@
 const config = require('../config/database');
 
-console.log('hello')
 const User = config.bookshelf.Model.extend({
    tableName: 'users',
    userInfo: function() {
@@ -9,6 +8,10 @@ const User = config.bookshelf.Model.extend({
    address: function() {
      return this.hasOne(address);
    }
+});
+
+const Users = config.bookshelf.Collection.extend({
+  model: User
 });
 
 module.exports = User;

@@ -12,7 +12,7 @@ const port = process.env.PORT || 1337
 const app = express();
 const compiler = webpack(webpackConfig);
 
-app.use('api/',apiRoutes)
+app.use('/api', apiRoutes)
 
 //For development only
 if(process.env.NODE_ENV === 'development') {
@@ -28,6 +28,10 @@ if(process.env.NODE_ENV === 'development') {
 
   app.use(express.static(webpackConfig.output.publicPath));
 }
+
+app.get('*', (req, res) => {
+  res.redirect('/');
+})
 
 app.listen(port, () => {
 	console.log(chalk.cyan(`<Eka Solutions> is listening on ${port}`))

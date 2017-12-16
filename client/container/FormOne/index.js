@@ -6,19 +6,23 @@ class FormOne extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
-      email: null
+      username: '',
+      password: '',
+      email: ''
     };
   }
 
   handleFormSubmit = (event) => {
     const formOne = { ...this.state }
+    event.preventDefault();
     console.log('formOne: ', formOne);
+    this.props.dispatch(actions.postFormOne(formOne))
+
   }
 
   handleChange = (event) => {
     const obj = {};
+    event.preventDefault();
     obj[`${event.target.name}`] = event.target.value;
     this.setState(obj);
   }
@@ -29,12 +33,12 @@ class FormOne extends React.Component {
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
             <label
-              htmlFor="userName"
+              htmlFor="username"
             >userName</label>
             <input
               type="text"
               onChange={this.handleChange}
-              name="userName"
+              name="username"
               value={this.state.username}
               placeholder="Please enter username"
               required
@@ -43,12 +47,12 @@ class FormOne extends React.Component {
           <fieldset>
             <label
               htmlFor="email"
-            >Password</label>
+            >Email</label>
             <input
               type="email"
               onChange={this.handleChange}
               name="email"
-              value={this.state.password}
+              value={this.state.email}
               placeholder="Please enter email address"
               required
             />
@@ -72,10 +76,6 @@ class FormOne extends React.Component {
     );
   }
 }
-
-FormOne.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-};
 
 function mapStateToProps(state) {
   return {
