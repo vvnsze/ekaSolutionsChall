@@ -5,11 +5,11 @@ import {
   FORM_THREE_SUBMISSION_RESULTS
 } from './constants';
 
-export function* initiateFormOneSubmit() {
+export function* initiateFormThreeSubmit() {
   yield takeLatest(POST_FORM_THREE, FormOneSubmit);
 }
 
-function* FormOneSubmit(action) {
+function* FormThreeSubmit(action) {
   console.log('payload ', action.payload)
   const user = action.payload;
   try {
@@ -21,8 +21,8 @@ function* FormOneSubmit(action) {
   }
 }
 
-function postFormOneAsync(params) {
+function postFormThreeAsync(params) {
   return axios.post('/api/formThree', params);
 }
 
-export default initiateFormOneSubmit
+export default initiateFormThreeSubmit

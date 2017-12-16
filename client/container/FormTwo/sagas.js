@@ -9,11 +9,11 @@ export function* initiateFormOneSubmit() {
   yield takeLatest(POST_FORM_TWO, FormOneSubmit);
 }
 
-function* FormOneSubmit(action) {
+function* FormTwoSubmit(action) {
   console.log('payload ', action.payload)
-  const user = action.payload;
+  const userInfo = action.payload;
   try {
-    const result = yield call(postFormOneAsync, user);
+    const result = yield call(postFormOneAsync, userInfo);
     console.log('result' , result.data);
     yield put({ type: FORM_TWO_SUBMISSION_RESULTS, result: result.data });
   } catch (e) {
@@ -21,8 +21,8 @@ function* FormOneSubmit(action) {
   }
 }
 
-function postFormOneAsync(params) {
+function postFormTwoAsync(params) {
   return axios.post('/api/formTwo', params);
 }
 
-export default initiateFormOneSubmit
+export default initiateFormTwoSubmit

@@ -1,6 +1,7 @@
 
 import {
   POST_FORM_TWO,
+  FORM_TWO_SUBMISSION_RESULTS
 } from './constants';
 
 const initialState = { form: 'null' };

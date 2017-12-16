@@ -1,7 +1,7 @@
 const UserInfo = require('./model');
 const chalk = require('chalk');
 
-exports.addFormOne = (req, res) => {
+exports.addFormTwo = (req, res) => {
   console.log(chalk.cyan('add formOne: '), req.body);
   new UserInfo ({
     firstName: req.body.firstName,
