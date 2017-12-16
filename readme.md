@@ -1,1 +1,1 @@
-To be Filled
+Please look at .envExample for environment variables

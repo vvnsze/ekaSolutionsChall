@@ -3,9 +3,11 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './client/index.js',
+  target: 'web',
+  entry: './client/public/app.js',
   output: {
     path: path.join(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'bundle.js'
   },
   module: {
@@ -26,8 +28,8 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebpackPlugin({
-      template: './client/index.html'
+      hash: true,
+      template: './client/public/index.html'
     })
   ]
-};
-};
+}
