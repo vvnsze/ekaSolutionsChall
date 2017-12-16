@@ -8,7 +8,7 @@ const initialState = { hello: 'world' };
 function formThreeReducer(state = initialState, action) {
   switch (action.type) {
     case POST_FORM_THREE:
-      return { hello: 'there' };
+      return { hello: 'three' };
     default:
       return state;
   }
