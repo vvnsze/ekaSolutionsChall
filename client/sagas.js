@@ -1,4 +1,7 @@
-import { all } from 'redux-saga/effects'
+import { all } from 'redux-saga/effects';
+import * as formOneSagas from './container/FormOne/sagas';
+
+console.log('f1sagas: ', formOneSagas);
 
 function* helloSaga() {
   console.log('Hello Sagas!')

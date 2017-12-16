@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-const Homepage = () => (
-  <div className="Homepage">
-    <h1>Eka Solutions Homepage</h1>
-    <img src="https://i.pinimg.com/originals/8c/6c/55/8c6c55cd70c5dc9bac7860b8d89c386c.gif" />
-  </div>
-);
+class Homepage extends React.Component {
+  render() {
+    return (
+      <div className="homepage">
+        <h1>Make Your Life Whole Again</h1>
+        <h3>Get a monthly subscription of Pies</h3>
+        <Link to="/formOne">Sign Up</Link>
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 export default Homepage;

@@ -5,7 +5,10 @@ import { Router, Route } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux'
 import { Provider } from 'react-redux'
 import store from '../store'
-import Homepage from './Homepage';
+import Homepage from './homepage';
+import FormOne from '../container/FormOne';
+import FormTwo from '../container/FormTwo';
+import FormThree from '../container/FormThree';
 
 const history = syncHistoryWithStore(createBrowserHistory(), store)
 
@@ -15,7 +18,9 @@ const App = () => (
     <Router history={history}>
       <div className="app">
           <Route exact path="/" component={Homepage} />
-          {/* <Route path="/error" component={NoPage} /> */}
+          <Route path="/formOne" component={FormOne}/>
+          <Route path="/formTwo" component={FormTwo}/>
+          <Route path="/formThree" component={FormThree}/>
       </div>
     </Router>
   </Provider>
