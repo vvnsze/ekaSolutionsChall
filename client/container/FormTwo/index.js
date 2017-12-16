@@ -6,19 +6,22 @@ class FormTwo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: null,
-      lastName: null,
-      telephone: null
+      firstName: '',
+      lastName: '',
+      telephone: ''
     };
   }
 
   handleFormSubmit = (event) => {
     const formTwo = { ...this.state }
+    event.preventDefault();
     console.log('formTwo: ', formTwo);
+    this.props.dispatch(actions.postFormTwo(formTwo))
   }
 
   handleChange = (event) => {
     const obj = {};
+    event.preventDefault();
     obj[`${event.target.name}`] = event.target.value;
     this.setState(obj);
   }
@@ -34,34 +37,35 @@ class FormTwo extends React.Component {
             <input
               type="text"
               onChange={this.handleChange}
-              name="first Name"
+              name="firstName"
               value={this.state.username}
-              placeholder="Please enter username"
+              placeholder="First Name"
               required
             />
           </fieldset>
           <fieldset>
             <label
-              htmlFor="email"
+              htmlFor="lastName"
             >Password</label>
             <input
               type="email"
               onChange={this.handleChange}
-              name="email"
-              value={this.state.password}
-              placeholder="Please enter email address"
+              name="lastName"
+              value={this.state.lasName}
+              placeholder="Please enter Last Name"
               required
             />
           </fieldset>
           <fieldset>
             <label
-              htmlFor="password"
+              htmlFor="telephone"
             >Password</label>
             <input
-              type="password"
+              //I am aware there is a type input tel, but using number for now
+              type="number"
               onChange={this.handleChange}
-              name="password"
-              value={this.state.password}
+              name="telephone"
+              value={this.state.telephone}
               placeholder="Please create password"
               required
             />
@@ -72,10 +76,6 @@ class FormTwo extends React.Component {
     );
   }
 }
-
-FormTwo.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-};
 
 function mapStateToProps(state) {
   return {
