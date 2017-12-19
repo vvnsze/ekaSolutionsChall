@@ -19,8 +19,8 @@ function* FormTwoSubmit(action) {
   }
 }
 
-function postFormTwoAsync(params) {
-  return axios.post('/api/formTwo', params);
+function postFormTwoAsync(body) {
+  return axios.post('/api/formTwo', body);
 }
 
 export default initiateFormTwoSubmit

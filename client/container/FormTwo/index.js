@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions';
+import { Route, Redirect } from 'react-router-dom';
 
 class FormTwo extends React.Component {
   constructor(props) {
@@ -10,6 +11,12 @@ class FormTwo extends React.Component {
       lastName: '',
       telephone: ''
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.result.result === 'success') {
+      nextProps.history.push('/formTwo');
+    }
   }
 
   handleFormSubmit = (event) => {
@@ -39,16 +46,16 @@ class FormTwo extends React.Component {
               onChange={this.handleChange}
               name="firstName"
               value={this.state.username}
-              placeholder="First Name"
+              placeholder="Please enter First Name"
               required
             />
           </fieldset>
           <fieldset>
             <label
               htmlFor="lastName"
-            >Password</label>
+            >Last name</label>
             <input
-              type="email"
+              type="text"
               onChange={this.handleChange}
               name="lastName"
               value={this.state.lasName}
@@ -59,14 +66,13 @@ class FormTwo extends React.Component {
           <fieldset>
             <label
               htmlFor="telephone"
-            >Password</label>
+            >Telephone</label>
             <input
-              //I am aware there is a type input tel, but using number for now
-              type="number"
+              type="telephone"
               onChange={this.handleChange}
               name="telephone"
               value={this.state.telephone}
-              placeholder="Please create password"
+              placeholder="Please enter telephone #"
               required
             />
           </fieldset>
@@ -79,7 +85,7 @@ class FormTwo extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // displayCards: state.cards.allCards,
+    result: state.formTwo.result
   };
 }
 

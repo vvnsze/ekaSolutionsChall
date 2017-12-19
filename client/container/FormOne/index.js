@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions';
-import { Route, Redirect } from 'react-router';
 
 class FormOne extends React.Component {
   constructor(props) {
@@ -14,10 +13,10 @@ class FormOne extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-  if (nextProps.result.result === 'success') {
-      <Redirect to="/formTwo"/>
+    if (nextProps.result.result === 'success') {
+      nextProps.history.push('/formTwo');
+    }
   }
-}
 
   handleFormSubmit = (event) => {
     const formOne = { ...this.state }

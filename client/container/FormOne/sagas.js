@@ -13,7 +13,7 @@ function* FormOneSubmit(action) {
   const user = action.payload;
   try {
     const result = yield call(postFormOneAsync, user);
-    yield put({ type: FORM_ONE_SUBMISSION_RESULTS, result: result.data });
+    yield put({ type: FORM_ONE_SUBMISSION_RESULTS, result: result.data, user: action.payload });
   } catch (e) {
     console.error(e);
   }

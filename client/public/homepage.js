@@ -8,7 +8,7 @@ class Homepage extends React.Component {
         <h1>Make Your Life Whole Again</h1>
         <h3>Get a monthly subscription of Pies</h3>
         <Link to="/formOne">Sign Up</Link>
-        {this.props.children}
+        {/* {this.props.children} */}
       </div>
     );
   }

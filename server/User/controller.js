@@ -2,7 +2,6 @@ const User = require('./model');
 const chalk = require('chalk');
 
 exports.addFormOne = (req, res) => {
-  console.log(chalk.cyan('add formOne: '), req.body);
   new User ({
     username: req.body.username,
     password: req.body.password,
@@ -15,5 +14,4 @@ exports.addFormOne = (req, res) => {
     console.log(err);
     res.send({ error: 'there was an error' })
   })
-
 };

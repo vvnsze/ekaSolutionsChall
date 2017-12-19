@@ -6,14 +6,17 @@ class FormThree extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
-      email: null
+      street: '',
+      state: '',
+      country: '',
+      zip: '',
     };
   }
 
   handleFormSubmit = (event) => {
-    const formThree = { ...this.state }
+    const address = `${this.state.street},${this.state.state},${this.state.country},${this.state.zip}`;
+    console.log(address);
+    const formThree = { address }
     console.log('formThree: ', formThree);
   }
 
@@ -29,40 +32,53 @@ class FormThree extends React.Component {
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
             <label
-              htmlFor="userName"
-            >userName</label>
+              htmlFor="street"
+            >street</label>
             <input
               type="text"
               onChange={this.handleChange}
-              name="userName"
-              value={this.state.username}
-              placeholder="Please enter username"
+              name="street"
+              value={this.state.street}
+              placeholder="street"
               required
             />
           </fieldset>
           <fieldset>
             <label
-              htmlFor="email"
-            >Password</label>
+              htmlFor="state"
+            >state</label>
             <input
-              type="email"
+              type="text"
               onChange={this.handleChange}
-              name="email"
-              value={this.state.password}
-              placeholder="Please enter email address"
+              name="state"
+              value={this.state.state}
+              placeholder="state"
               required
             />
           </fieldset>
           <fieldset>
             <label
-              htmlFor="password"
-            >Password</label>
+              htmlFor="country"
+            >country</label>
             <input
-              type="password"
+              type="text"
               onChange={this.handleChange}
-              name="password"
-              value={this.state.password}
-              placeholder="Please create password"
+              name="country"
+              value={this.state.country}
+              placeholder="country"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <label
+              htmlFor="zip"
+            >country</label>
+            <input
+              type="number"
+              onChange={this.handleChange}
+              name="zip"
+              value={this.state.zip}
+              placeholder="zip"
               required
             />
           </fieldset>
@@ -79,7 +95,7 @@ FormThree.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    // displayCards: state.cards.allCards,
+    result: this.state.formThree.results
   };
 }
 
