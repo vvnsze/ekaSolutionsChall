@@ -15,14 +15,15 @@ class FormTwo extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.result.result === 'success') {
-      nextProps.history.push('/formTwo');
+      nextProps.history.push('/formThree');
     }
   }
 
   handleFormSubmit = (event) => {
-    const formTwo = { ...this.state }
+    const formTwo = { ...this.state, id: this.props.user.id }
     event.preventDefault();
     console.log('formTwo: ', formTwo);
+
     this.props.dispatch(actions.postFormTwo(formTwo))
   }
 
@@ -85,6 +86,7 @@ class FormTwo extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    user: state.formOne.result,
     result: state.formTwo.result
   };
 }
