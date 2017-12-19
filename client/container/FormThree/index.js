@@ -14,10 +14,22 @@ class FormThree extends React.Component {
     };
   }
 
+  finishedOnboarding = () => {
+    console.log('props: ',this.props)
+    if(this.props.result !== null){
+      if (this.props.result.result === 'success') {
+        return <div>We're done! Pies for everyone!</div>
+      }
+    } else {
+      return <div></div>
+    }
+  }
+
+
+
   handleFormSubmit = (event) => {
     const address = `${this.state.street},${this.state.city},${this.state.state},${this.state.country},${this.state.zip}`;
     const formThree = { address, id: this.props.user.id }
-    console.log('formThree: ', formThree);
     this.props.dispatch(actions.postFormThree(formThree));
     event.preventDefault();
   }
@@ -100,6 +112,7 @@ class FormThree extends React.Component {
           </fieldset>
           <input type="submit" />
         </form>
+        {this.finishedOnboarding()}
       </div>
     );
   }
@@ -108,7 +121,7 @@ class FormThree extends React.Component {
 function mapStateToProps(state) {
   return {
     user: state.formOne.result,
-    result: state.formThree.results
+    result: state.formThree.result3
   };
 }
 
