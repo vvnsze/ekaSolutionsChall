@@ -9,7 +9,6 @@ exports.addFormTwo = (req, res) => {
     telephone: req.body.telephone
   }).save()
   .then((result) => {
-    console.log(chalk.magenta('result2: '), result)
     res.send({result: 'success'})
   }).catch((err) => {
     console.log(chalk.red('err: '), err);

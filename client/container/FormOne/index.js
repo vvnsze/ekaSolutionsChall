@@ -21,7 +21,6 @@ class FormOne extends React.Component {
   handleFormSubmit = (event) => {
     const formOne = { ...this.state }
     event.preventDefault();
-    console.log('formOne: ', formOne);
     this.props.dispatch(actions.postFormOne(formOne))
 
   }

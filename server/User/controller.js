@@ -8,7 +8,6 @@ exports.addFormOne = (req, res) => {
     email: req.body.email
   }).save()
   .then((result) => {
-    console.log(chalk.magenta('result: '), result.id)
     res.send({ result: 'success', id: result.id })
   }).catch((err) => {
     console.log(err);

@@ -15,7 +15,6 @@ class FormThree extends React.Component {
   }
 
   finishedOnboarding = () => {
-    console.log('props: ',this.props)
     if(this.props.result !== null){
       if (this.props.result.result === 'success') {
         return <div>We're done! Pies for everyone!</div>

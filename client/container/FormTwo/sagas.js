@@ -13,7 +13,6 @@ function* FormTwoSubmit(action) {
   const userInfo = action.payload;
   try {
     const result = yield call(postFormTwoAsync, userInfo);
-    console.log('result for userInfo: ', result.data);
     yield put({ type: FORM_TWO_SUBMISSION_RESULTS, result: result.data });
   } catch (e) {
     console.error(e);
