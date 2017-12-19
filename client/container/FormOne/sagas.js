@@ -10,11 +10,9 @@ export function* initiateFormOneSubmit() {
 }
 
 function* FormOneSubmit(action) {
-  console.log('payload ', action.payload)
   const user = action.payload;
   try {
     const result = yield call(postFormOneAsync, user);
-    console.log('result' , result.data);
     yield put({ type: FORM_ONE_SUBMISSION_RESULTS, result: result.data });
   } catch (e) {
     console.error(e);
