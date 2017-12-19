@@ -21,9 +21,9 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/formOne" component={FormOne}/>
-        <Route path="/formThree" component={FormThree}/>
       </Switch>
         <Route exact path="/formTwo" component={FormTwo}/>
+        <Route exact path="/formThree" component={FormThree}/>
       </div>
     </BrowserRouter>
     {/* </Router> */}

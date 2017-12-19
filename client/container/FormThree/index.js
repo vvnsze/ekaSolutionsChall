@@ -7,6 +7,7 @@ class FormThree extends React.Component {
     super(props);
     this.state = {
       street: '',
+      city: '',
       state: '',
       country: '',
       zip: '',
@@ -14,16 +15,18 @@ class FormThree extends React.Component {
   }
 
   handleFormSubmit = (event) => {
-    const address = `${this.state.street},${this.state.state},${this.state.country},${this.state.zip}`;
-    console.log(address);
-    const formThree = { address }
+    const address = `${this.state.street},${this.state.city},${this.state.state},${this.state.country},${this.state.zip}`;
+    const formThree = { address, id: this.props.user.id }
     console.log('formThree: ', formThree);
+    this.props.dispatch(actions.postFormThree(formThree));
+    event.preventDefault();
   }
 
   handleChange = (event) => {
     const obj = {};
     obj[`${event.target.name}`] = event.target.value;
     this.setState(obj);
+    event.preventDefault();
   }
 
   render() {
@@ -40,6 +43,19 @@ class FormThree extends React.Component {
               name="street"
               value={this.state.street}
               placeholder="street"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <label
+              htmlFor="city"
+            >city</label>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              name="city"
+              value={this.state.city}
+              placeholder="city"
               required
             />
           </fieldset>
@@ -72,7 +88,7 @@ class FormThree extends React.Component {
           <fieldset>
             <label
               htmlFor="zip"
-            >country</label>
+            >zip</label>
             <input
               type="number"
               onChange={this.handleChange}
@@ -89,13 +105,10 @@ class FormThree extends React.Component {
   }
 }
 
-FormThree.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-};
-
 function mapStateToProps(state) {
   return {
-    result: this.state.formThree.results
+    user: state.formOne.result,
+    result: state.formThree.results
   };
 }
 

@@ -1,5 +1,4 @@
 const UserInfo = require('./model');
-const User = require('../User/model');
 const chalk = require('chalk');
 
 exports.addFormTwo = (req, res) => {
@@ -10,10 +9,10 @@ exports.addFormTwo = (req, res) => {
     telephone: req.body.telephone
   }).save()
   .then((result) => {
-    console.log(chalk.magenta('result: '), result)
+    console.log(chalk.magenta('result2: '), result)
     res.send({result: 'success'})
   }).catch((err) => {
-    console.log(err);
+    console.log(chalk.red('err: '), err);
     res.send({ error: 'there was an error' })
   })
 

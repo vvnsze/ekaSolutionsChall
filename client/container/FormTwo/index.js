@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions';
-import { Route, Redirect } from 'react-router-dom';
 
 class FormTwo extends React.Component {
   constructor(props) {
@@ -22,8 +21,6 @@ class FormTwo extends React.Component {
   handleFormSubmit = (event) => {
     const formTwo = { ...this.state, id: this.props.user.id }
     event.preventDefault();
-    console.log('formTwo: ', formTwo);
-
     this.props.dispatch(actions.postFormTwo(formTwo))
   }
 

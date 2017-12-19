@@ -1,13 +1,14 @@
 
 import {
   POST_FORM_THREE,
+  FORM_THREE_SUBMISSION_RESULTS
 } from './constants';
 
-const initialState = { hello: 'world' };
+const initialState = { };
 
 function formThreeReducer(state = initialState, action) {
   switch (action.type) {
-    case POST_FORM_THREE:
+    case FORM_THREE_SUBMISSION_RESULTS:
       return { hello: 'three' };
     default:
       return state;

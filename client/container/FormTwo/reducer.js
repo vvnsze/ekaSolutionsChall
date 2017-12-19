@@ -4,12 +4,12 @@ import {
   FORM_TWO_SUBMISSION_RESULTS
 } from './constants';
 
-const initialState = { form: 'null' };
+const initialState = { };
 
 function formTwoReducer(state = initialState, action) {
   switch (action.type) {
-    case POST_FORM_TWO:
-      return { form: 'two' };
+    case FORM_TWO_SUBMISSION_RESULTS:
+      return { result: action.result };
     default:
       return state;
   }
