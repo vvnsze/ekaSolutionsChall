@@ -10,11 +10,9 @@ export function* initiateFormThreeSubmit() {
 }
 
 function* FormThreeSubmit(action) {
-  console.log('payload ', action.payload)
   const user = action.payload;
   try {
     const result = yield call(postFormThreeAsync, user);
-    console.log('result' , result.data);
     yield put({ type: FORM_THREE_SUBMISSION_RESULTS, result: result.data });
   } catch (e) {
     console.error(e);

@@ -12,10 +12,15 @@ class FormOne extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.result.result === 'success') {
+      nextProps.history.push('/formTwo');
+    }
+  }
+
   handleFormSubmit = (event) => {
     const formOne = { ...this.state }
     event.preventDefault();
-    console.log('formOne: ', formOne);
     this.props.dispatch(actions.postFormOne(formOne))
 
   }

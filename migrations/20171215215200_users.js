@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary();
         table.string('firstName');
         table.string('lastName');
-        table.integer('telephone');
+        table.string('telephone');
         table.integer('user_id')
              .references('id')
              .inTable('users');

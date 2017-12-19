@@ -10,19 +10,17 @@ export function* initiateFormTwoSubmit() {
 }
 
 function* FormTwoSubmit(action) {
-  console.log('payload ', action.payload)
   const userInfo = action.payload;
   try {
-    const result = yield call(postFormOneAsync, userInfo);
-    console.log('result' , result.data);
+    const result = yield call(postFormTwoAsync, userInfo);
     yield put({ type: FORM_TWO_SUBMISSION_RESULTS, result: result.data });
   } catch (e) {
     console.error(e);
   }
 }
 
-function postFormTwoAsync(params) {
-  return axios.post('/api/formTwo', params);
+function postFormTwoAsync(body) {
+  return axios.post('/api/formTwo', body);
 }
 
 export default initiateFormTwoSubmit

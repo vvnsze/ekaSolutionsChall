@@ -6,21 +6,38 @@ class FormThree extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
-      email: null
+      street: '',
+      city: '',
+      state: '',
+      country: '',
+      zip: '',
     };
   }
 
+  finishedOnboarding = () => {
+    if(this.props.result !== null){
+      if (this.props.result.result === 'success') {
+        return <div>We're done! Pies for everyone!</div>
+      }
+    } else {
+      return <div></div>
+    }
+  }
+
+
+
   handleFormSubmit = (event) => {
-    const formThree = { ...this.state }
-    console.log('formThree: ', formThree);
+    const address = `${this.state.street},${this.state.city},${this.state.state},${this.state.country},${this.state.zip}`;
+    const formThree = { address, id: this.props.user.id }
+    this.props.dispatch(actions.postFormThree(formThree));
+    event.preventDefault();
   }
 
   handleChange = (event) => {
     const obj = {};
     obj[`${event.target.name}`] = event.target.value;
     this.setState(obj);
+    event.preventDefault();
   }
 
   render() {
@@ -29,57 +46,81 @@ class FormThree extends React.Component {
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
             <label
-              htmlFor="userName"
-            >userName</label>
+              htmlFor="street"
+            >street</label>
             <input
               type="text"
               onChange={this.handleChange}
-              name="userName"
-              value={this.state.username}
-              placeholder="Please enter username"
+              name="street"
+              value={this.state.street}
+              placeholder="street"
               required
             />
           </fieldset>
           <fieldset>
             <label
-              htmlFor="email"
-            >Password</label>
+              htmlFor="city"
+            >city</label>
             <input
-              type="email"
+              type="text"
               onChange={this.handleChange}
-              name="email"
-              value={this.state.password}
-              placeholder="Please enter email address"
+              name="city"
+              value={this.state.city}
+              placeholder="city"
               required
             />
           </fieldset>
           <fieldset>
             <label
-              htmlFor="password"
-            >Password</label>
+              htmlFor="state"
+            >state</label>
             <input
-              type="password"
+              type="text"
               onChange={this.handleChange}
-              name="password"
-              value={this.state.password}
-              placeholder="Please create password"
+              name="state"
+              value={this.state.state}
+              placeholder="state"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <label
+              htmlFor="country"
+            >country</label>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              name="country"
+              value={this.state.country}
+              placeholder="country"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <label
+              htmlFor="zip"
+            >zip</label>
+            <input
+              type="number"
+              onChange={this.handleChange}
+              name="zip"
+              value={this.state.zip}
+              placeholder="zip"
               required
             />
           </fieldset>
           <input type="submit" />
         </form>
+        {this.finishedOnboarding()}
       </div>
     );
   }
 }
 
-FormThree.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-};
-
 function mapStateToProps(state) {
   return {
-    // displayCards: state.cards.allCards,
+    user: state.formOne.result,
+    result: state.formThree.result3
   };
 }
 
